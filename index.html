@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fire After Dark</title>
+  <meta name="description" content="The January 2025 Los Angeles fires as seen by the GOES-18 weather satellite, every 5 minutes. DSC 106 final project prototype.">
+  <link rel="icon" href="data:,">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="hero">
+    <p class="kicker">DSC 106 Final Project · Prototype</p>
+    <h1>Fire After Dark</h1>
+    <p class="dek">The January 2025 Los Angeles fires, watched every 5 minutes from 35,786 km above the Pacific.</p>
+    <p class="hook">At <strong>10:31 a.m. on January 7, 2025</strong>, the GOES-18 weather satellite flagged a hot pixel in the
+      Santa Monica Mountains, one minute after the Palisades Fire was first reported. About twelve hours later that fire was
+      giving off <strong>25 gigawatts</strong> of heat. It was the middle of the night.</p>
+    <p class="byline">Steven Ngo, Aditya Mittal, Leo Wong</p>
+  </header>
+
+  <main>
+    <section class="step" id="s-where">
+      <div class="step-text">
+        <p class="step-num">1</p>
+        <h2>Where the satellite saw fire</h2>
+        <p>Each tile is one GOES-18 pixel that was flagged as fire at least twice within two hours, drawn at its true size
+          on the ground: about 2.3 by 2.8 km. Black outlines are the official final perimeters.</p>
+        <p class="hint">Hover a tile for details. Click a fire in the legend to pick it out.</p>
+      </div>
+      <figure class="chart-card">
+        <div class="legend" id="overview-legend"></div>
+        <div class="chart" id="overview-map" role="img" aria-label="Map of GOES-18 fire pixels around Los Angeles, January 7 to 31, 2025"></div>
+      </figure>
+    </section>
+
+    <section class="step" id="s-soon">
+      <div class="step-text">
+        <p class="step-num">2</p>
+        <h2>How soon did it see each fire?</h2>
+        <p>Grey bars span the reported start times, which disagree between sources. Dots mark the first 5-minute scan
+          that caught each fire. Most fires were caught within a quarter of an hour.</p>
+      </div>
+      <figure class="chart-card">
+        <div class="chart" id="detection" role="img" aria-label="Minutes from each fire's reported start to its first satellite detection"></div>
+      </figure>
+    </section>
+
+    <section class="step" id="s-when">
+      <div class="step-text">
+        <p class="step-num">3</p>
+        <h2>When do fires burn hardest?</h2>
+        <p>Wildfires usually follow the sun. Before you look: <strong>click the hour of the day</strong> when you think a
+          wildfire gives off the most heat.</p>
+        <p class="reveal-text" id="hours-reveal" hidden>In the summer 2026 western fire season, fires peaked at
+          <strong>3 p.m.</strong> and only 22% of their power came out between 7 p.m. and 5 a.m. During the Santa Ana winds,
+          Palisades and Eaton peaked at <strong>11 p.m.</strong> Those first 48 hours held 73% of their energy. When the
+          winds eased, the usual daytime cycle came back.</p>
+      </div>
+      <figure class="chart-card">
+        <div class="controls">
+          <div class="segmented" id="hours-toggle" role="group" aria-label="Los Angeles period">
+            <button type="button" data-k="winds" aria-pressed="true">Santa Ana winds, Jan 7–9</button>
+            <button type="button" data-k="after" aria-pressed="false">After the winds, Jan 9–12</button>
+          </div>
+          <button type="button" class="chip" id="hours-reset">Guess again</button>
+        </div>
+        <div class="legend" id="hours-legend"></div>
+        <div class="chart" id="hours" role="img" aria-label="Share of fire power by hour of day"></div>
+      </figure>
+    </section>
+
+    <section class="step" id="s-48">
+      <div class="step-text">
+        <p class="step-num">4</p>
+        <h2>The first 48 hours</h2>
+        <p>Palisades and Eaton both burned hardest after dark, then dropped sharply before dawn on January 8. A second
+          satellite, GOES-16, watching from the other side of the country, saw the same peak and the same drop.</p>
+        <p class="hint">Hover for exact values. Switch to the satellite check to compare GOES-18 with GOES-16.</p>
+      </div>
+      <figure class="chart-card">
+        <div class="controls">
+          <div class="segmented" id="first48-toggle" role="group" aria-label="View">
+            <button type="button" data-k="fires" aria-pressed="true">Palisades and Eaton</button>
+            <button type="button" data-k="check" aria-pressed="false">Satellite check</button>
+          </div>
+        </div>
+        <div class="legend" id="first48-legend"></div>
+        <div class="chart" id="first48" role="img" aria-label="Fire radiative power every 30 minutes for the first 48 hours"></div>
+      </figure>
+    </section>
+
+    <section class="step" id="s-grow">
+      <div class="step-text">
+        <p class="step-num">5</p>
+        <h2>Watch each fire grow</h2>
+        <p>Press play to replay each fire in 30-minute steps from its reported start. Coloured tiles are burning in
+          that half hour; grey tiles burned earlier. The strip below shows the fire's total power, and you can click it to jump.</p>
+      </div>
+      <figure class="chart-card">
+        <div class="controls">
+          <div class="segmented" id="growth-fire" role="group" aria-label="Fire">
+            <button type="button" data-k="palisades" aria-pressed="true">Palisades</button>
+            <button type="button" data-k="eaton" aria-pressed="false">Eaton</button>
+            <button type="button" data-k="hughes" aria-pressed="false">Hughes</button>
+          </div>
+        </div>
+        <div class="player">
+          <button type="button" class="play" id="growth-play" aria-label="Play">
+            <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path class="icon-play" d="M4 2.5v11l9-5.5z"/><path class="icon-pause" d="M3.5 2.5h3v11h-3zM9.5 2.5h3v11h-3z"/></svg>
+          </button>
+          <input type="range" id="growth-slider" min="0" max="0" value="0" step="1" aria-label="Time after the reported start">
+          <output id="growth-clock" for="growth-slider"></output>
+        </div>
+        <div class="legend" id="growth-legend"></div>
+        <div class="chart" id="growth-map" role="img" aria-label="Map of one fire's burning pixels over time"></div>
+        <div class="chart" id="growth-strip" aria-label="Total fire power over time; click to jump"></div>
+      </figure>
+    </section>
+
+    <section class="step" id="s-day1">
+      <div class="step-text">
+        <p class="step-num">6</p>
+        <h2>Most of the energy came out on day one</h2>
+        <p>Each line starts at the fire's reported start. Switch to the share view to see how much of each fire's total
+          energy was already released, hour by hour.</p>
+      </div>
+      <figure class="chart-card">
+        <div class="controls">
+          <div class="segmented" id="day1-toggle" role="group" aria-label="Measure">
+            <button type="button" data-k="cum" aria-pressed="true">Share of energy released</button>
+            <button type="button" data-k="gw" aria-pressed="false">Power, GW</button>
+          </div>
+        </div>
+        <div class="legend" id="day1-legend"></div>
+        <div class="chart" id="day1" role="img" aria-label="Energy released over the first ten days of each fire"></div>
+      </figure>
+    </section>
+
+    <section class="step" id="s-energy">
+      <div class="step-text">
+        <p class="step-num">7</p>
+        <h2>How much energy each fire released</h2>
+        <p>Palisades gave off more radiated energy than every other fire combined, and about twice as much per acre as Eaton.</p>
+      </div>
+      <figure class="chart-card">
+        <div class="controls">
+          <div class="segmented" id="energy-toggle" role="group" aria-label="Measure">
+            <button type="button" data-k="energyTJ" aria-pressed="true">Total, TJ</button>
+            <button type="button" data-k="mjPerAcre" aria-pressed="false">Per burned acre, MJ</button>
+          </div>
+        </div>
+        <div class="chart" id="energy" role="img" aria-label="Total fire radiative energy per fire"></div>
+      </figure>
+    </section>
+
+    <section class="closing">
+      <h2>Takeaway (draft)</h2>
+      <p>For a wind-driven fire, the first hours decide most of what it will do. In Los Angeles those hours came in the
+        middle of the night, the opposite of the usual wildfire cycle, and a satellite saw them unfold in near real time.</p>
+    </section>
+
+    <section class="notes" id="prototype-notes">
+      <h2>Prototype notes</h2>
+      <h3>What we have done so far</h3>
+      <p class="todo-block">Draft for the team to rewrite in your own words before submitting. We chose the January 2025 Los Angeles fires as a case study
+        of wildfire spread and pulled every 5-minute GOES-18 fire scan over Los Angeles for January 7 to 31, 2025, along
+        with GOES-16 for the first two days as an independent check. We matched each fire pixel to an official NIFC
+        perimeter and built seven static figures, then rebuilt them here as linked D3 charts in story order. The page
+        already has its main interactions: a guess-then-reveal chart, a satellite toggle, and a replay of each fire's
+        growth with a play button and slider. The text is still placeholder-level, and the charts do not yet respond to
+        scrolling.</p>
+      <h3>What will be most challenging</h3>
+      <p class="todo-block">Draft for the team to rewrite in your own words. The hardest part will be making a 2–3 km satellite pixel feel meaningful
+        next to a city: Palisades covers only about 36 pixels, so the maps can look sparse. Explaining fire radiative power
+        to readers who have never heard of it is the second challenge, and we plan to compare gigawatts with familiar
+        things such as power plants. We also need to describe the pre-dawn drop on January 8 honestly, because both
+        satellites use the same algorithm and the data cannot say what caused it. Finally, turning the page into a
+        scroll-driven story while keeping the animation smooth on a laptop will take careful design and testing.</p>
+    </section>
+
+    <section class="notes" id="data-notes">
+      <h2>Data and method</h2>
+      <p id="data-summary"></p>
+      <ul>
+        <li><strong>GOES-18 Fire/Hot Spot Characterization</strong> (<code>ABI-L2-FDCC</code>, AWS bucket <code>noaa-goes18</code>): fire mask and fire radiative power for every 5-minute scan.</li>
+        <li><strong>GOES-16</strong> (<code>noaa-goes16</code>), first 48 hours only, as an independent check.</li>
+        <li><strong>NIFC WFIGS</strong> final perimeters, origins and discovery times. Lidia and Sunset have no perimeter and are matched by distance and time.</li>
+        <li><strong>Summer 2026 western US</strong> fire data from our Project 3, for the usual daily cycle.</li>
+        <li><strong>Natural Earth</strong> coastline. Times are Pacific Standard Time.</li>
+      </ul>
+      <p>Power is a rate, so every value is averaged over the scans in its time step, never summed. Pixels flagged as cloud
+        or smoke (<span id="nopower-share"></span> here) get the average power of nearby pixels. Full processing steps:
+        <a href="visualizations/static/README.md">visualizations/static/README.md</a>.</p>
+    </section>
+  </main>
+
+  <div class="tooltip" id="tooltip" role="status" aria-live="polite" hidden></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

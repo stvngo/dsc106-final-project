@@ -166,20 +166,17 @@
     <section class="notes" id="prototype-notes">
       <h2>Prototype notes</h2>
       <h3>What we have done so far</h3>
-      <p class="todo-block">Draft for the team to rewrite in your own words before submitting. We chose the January 2025 Los Angeles fires as a case study
-        of wildfire spread and pulled every 5-minute GOES-18 fire scan over Los Angeles for January 7 to 31, 2025, along
-        with GOES-16 for the first two days as an independent check. We matched each fire pixel to an official NIFC
-        perimeter and built seven static figures, then rebuilt them here as linked D3 charts in story order. The page
-        already has its main interactions: a guess-then-reveal chart, a satellite toggle, and a replay of each fire's
-        growth with a play button and slider. The text is still placeholder-level, and the charts do not yet respond to
-        scrolling.</p>
+      <p>We chose the January 2025 Los Angeles fires as a case study of wildfire spread. We got this data by pulling the
+        GOES-18 fire scans over Los Angeles over 5-minute intervals for January 7 to 31, 2025. We then matched each fire
+        pixel to an official NIFC perimeter and built seven visualizations using this map linkage. These are now built as
+        D3 charts, with the core interactions of a guess-then-reveal chart, a satellite toggle, and a play button/slider
+        replay of the fires’ growth.</p>
       <h3>What will be most challenging</h3>
-      <p class="todo-block">Draft for the team to rewrite in your own words. The hardest part will be making a 2–3 km satellite pixel feel meaningful
-        next to a city: Palisades covers only about 36 pixels, so the maps can look sparse. Explaining fire radiative power
-        to readers who have never heard of it is the second challenge, and we plan to compare gigawatts with familiar
-        things such as power plants. We also need to describe the pre-dawn drop on January 8 honestly, because both
-        satellites use the same algorithm and the data cannot say what caused it. Finally, turning the page into a
-        scroll-driven story while keeping the animation smooth on a laptop will take careful design and testing.</p>
+      <p>The most challenging part of this project to design will be making large 2-3 km satellite pixels feel meaningful
+        next to cities. Cities span very small areas, so maps can look sparse with most satellite pixels being empty with
+        minimal effects. Additionally, another challenge we still need to solve is that a lot of the measurements we use
+        aren’t very intuitive for the reader, like radiative power in gigawatts. Therefore, we plan to make comparisons to
+        familiar things the readers understand to allow them to better grasp these complex topics.</p>
     </section>
 
     <section class="notes" id="data-notes">
